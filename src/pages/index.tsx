@@ -4,4 +4,4 @@ const Index = () => (
     </div>
 )
 
-export default Index
+export default Index;
