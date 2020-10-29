@@ -6,10 +6,12 @@ import { InputField } from '../components/InputField';
 import { useLoginMutation } from '../generated/graphql';
 import { toErrorMap } from '../utils/toErrorMap';
 import { useRouter } from "next/router";
+import { withUrqlClient } from 'next-urql';
+import { createUrqlClient } from '../utils/createUrqlClient';
 
 const Login: React.FC<{}> = ({}) => {
     const router = useRouter();
-    const [,login] = useLoginMutation();
+    const [, login] = useLoginMutation();
     
     return (
         <Wrapper variant='small'>
@@ -28,7 +30,7 @@ const Login: React.FC<{}> = ({}) => {
                 {({ isSubmitting }) => (
                     <Form>
                         <InputField name='username' placeholder='Enter username' label='Username'></InputField>
-                        <Box mt={4}>
+                        <Box mt={6}>
                             <InputField name='password' placeholder="Enter password" label='Password' type="password"></InputField>
                         </Box>
                         <Button type="submit" isLoading={isSubmitting} mt={6} size="md" variantColor="blue" variant="solid">Login</Button>
@@ -39,4 +41,4 @@ const Login: React.FC<{}> = ({}) => {
     );
 }
 
-export default Login;
+export default withUrqlClient(createUrqlClient)(Login);
