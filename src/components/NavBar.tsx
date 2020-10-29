@@ -33,13 +33,13 @@ export const NavBar: React.FC<NavBarProps> = ({ }) => {
         body = (
             <Flex>
                 <Box color='white' mr="3" fontSize="xl">{data.me.username}</Box>
-                <Button variant="link" color="blue.400">Logout</Button>
+                <Button variant="link" color="red.400">logout &rarr;</Button>
             </Flex>
         )
     }
     
     return (
-        <Flex bg="cyan.900" p={5} ml={'auto'}>
+        <Flex bg="black" p={5} ml={'auto'}>
             <Box ml={"auto"}>
                 {body}
             </Box>
