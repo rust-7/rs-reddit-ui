@@ -1,16 +1,17 @@
-import { Box, Button } from "@chakra-ui/core";
-import { Formik, Form } from "formik";
+import { Box, Button, Icon } from "@chakra-ui/core";
+import { Form, Formik } from "formik";
+import { withUrqlClient } from "next-urql";
+import { useRouter } from "next/router";
 import React from "react";
 import { InputField } from "../components/InputField";
-import { Wrapper } from "../components/Wrapper";
-import { useCreatePostMutation } from "../generated/graphql";
-import { useRouter } from "next/router";
-import { withUrqlClient } from "next-urql";
-import { createUrqlClient } from "../utils/createUrqlClient";
 import { Layout } from "../components/Layout";
+import { useCreatePostMutation } from "../generated/graphql";
+import { createUrqlClient } from "../utils/createUrqlClient";
+import { useIsAuth } from "../utils/useIsAuth";
 
 const CreatePost: React.FC<{}> = ({}) => {
     const router = useRouter();
+    useIsAuth();
     const [,createPost] = useCreatePostMutation();
     
     return (
@@ -30,7 +31,9 @@ const CreatePost: React.FC<{}> = ({}) => {
                         <InputField name="title" placeholder="Enter Title" label="Title" />
                         <Box mt={6}><InputField textarea name="text" placeholder="Enter Your Post..." label="Text" /> 
                         </Box>
-                        <Button type="submit" variantColor="green" isLoading={isSubmitting} mt={6} size="md" variant="solid">Create</Button>
+                        <Button type="submit" variantColor="green" isLoading={isSubmitting} mt={6} size="md" variant="solid">
+                            Create <Icon name="small-add" />
+                        </Button>
                     </Form>
                 )}
             </Formik>
