@@ -52,7 +52,7 @@ const ChangePassword: NextPage<{ token: string }> = () => {
 						) : null}
 						<Button mt={4} type="submit" isLoading={isSubmitting} variantColor="purple">
 							Change
-            </Button>
+            			</Button>
 					</Form>
 				)}
 			</Formik>
