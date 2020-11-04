@@ -31,8 +31,8 @@ const CreatePost: React.FC<{}> = ({}) => {
                         <InputField name="title" placeholder="Enter Title" label="Title" />
                         <Box mt={6}><InputField textarea name="text" placeholder="Enter Your Post..." label="Text" /> 
                         </Box>
-                        <Button type="submit" variantColor="green" isLoading={isSubmitting} mt={6} size="md" variant="solid">
-                            Create <Icon name="small-add" />
+                        <Button type="submit" size="lg" variantColor="green" isLoading={isSubmitting} mt={6} variant="solid">
+                            Create
                         </Button>
                     </Form>
                 )}
